@@ -106,7 +106,7 @@ public class DbUser {
 	 */
 	public static Ruser getUserByEmail(String email) {
 		EntityManager em = DbUtil.getEmFactory().createEntityManager();
-		String qString = "Select u from User u " + "where u.useremail = :useremail";
+		String qString = "Select r from Ruser r " + "where r.useremail = :useremail";
 		TypedQuery<Ruser> q = em.createQuery(qString, Ruser.class);
 		q.setParameter("useremail", email);
 		Ruser user = null;
@@ -132,14 +132,14 @@ public class DbUser {
 	 *            of type User
 	 * @return true or false indicating the user exists or doesn't
 	 */
-	public static boolean isValidUser(String email, String password) {
+	public static boolean isValidUser(String useremail, String userpassword) {
 		EntityManager em = DbUtil.getEmFactory().createEntityManager();
-		String qString = "Select count(b) from User b "
-				+ "where b.useremail = :useremail and b.userpassword = :userpass";
+		String qString = "Select count(r) from Ruser r "
+				+ "where r.useremail = :useremail and r.userpassword = :userpassword";
 		TypedQuery<Long> q = em.createQuery(qString, Long.class);
 		boolean result = false;
-		q.setParameter("useremail", email);
-		q.setParameter("userpass", password);
+		q.setParameter("useremail", useremail);
+		q.setParameter("userpassword", userpassword);
 
 		try {
 			long userId = q.getSingleResult();
