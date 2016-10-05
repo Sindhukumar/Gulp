@@ -1,4 +1,4 @@
-package Tool;
+package Util;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

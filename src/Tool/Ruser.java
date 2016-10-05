@@ -1,4 +1,4 @@
-package model;
+package Tool;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -21,6 +21,8 @@ public class Ruser implements Serializable {
 	private String useremail;
 
 	private String username;
+
+	private String userpassword;
 
 	private String userrole;
 
@@ -55,6 +57,14 @@ public class Ruser implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getUserpassword() {
+		return this.userpassword;
+	}
+
+	public void setUserpassword(String userpassword) {
+		this.userpassword = userpassword;
 	}
 
 	public String getUserrole() {
