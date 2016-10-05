@@ -1,11 +1,15 @@
 package Util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import Tool.RS;
+import Tool.Restaurant;
 import Tool.Review;
 
 
@@ -82,6 +86,30 @@ public class DbReview {
                 em.close();
             }
         return posts;
+    }
+    
+    public static List<RS> getRestaurantsWithRating (){
+        EntityManager em = DbUtil.getEmFactory().createEntityManager();
+        String qString = "select r.restaurant, avg(r.rating) average from Review r group by r.restaurant order by avg(r.rating)";
+        List<Object[]> restaurants=null;
+        List<RS> rsList = new ArrayList<RS>();
+        try{
+            Query query = em.createQuery(qString,RS.class);
+            restaurants = query.getResultList();
+            
+            for(Object[] o:restaurants){
+            	RS rs= new RS();
+            	rs.setRestaurant((Restaurant)o[0]);
+            	rs.setAverage(o[1]==null?-1:(double)o[1]);
+            	rsList.add(rs);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return rsList;
     }
     
     public static Review review (Integer reviewid){
