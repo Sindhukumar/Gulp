@@ -10,8 +10,9 @@
 	<form action="LoginPageServlet" method="post">
 	
 		User Email:<br> <input type="text" name="useremail" id="useremail"> <br> 
-		Password:<br> <input type="password" name="password" id="password"> <br> <br>
-	
+		Password:<br> <input type="password" name="userpassword" id="userpassword"> <br> <br>
+							 <input type="submit" value="Submit" id="submit" />		</form>
+				<br> <br> <br><br> <br> <br><br> <br> <br>	<br> <br> <br><br> <br> <br>
 		<br>
 	</form>
 </body>

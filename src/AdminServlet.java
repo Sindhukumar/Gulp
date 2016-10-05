@@ -7,21 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Tool.Restaurant;
 import Tool.Ruser;
+import Util.DbRestaurant;
 import Util.DbUser;
 
-
 /**
- * Servlet implementation class NewUserSignUpServlet
+ * Servlet implementation class AdminServlet
  */
-@WebServlet("/NewUserSignUpServlet")
-public class NewUserSignUpServlet extends HttpServlet {
+@WebServlet("/AdminServlet")
+public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewUserSignUpServlet() {
+    public AdminServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +31,8 @@ public class NewUserSignUpServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -39,25 +41,24 @@ public class NewUserSignUpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String username = request.getParameter("username");
-		String useremail = request.getParameter("useremail");
-		String password = request.getParameter("password");
-		String zip = request.getParameter("zip");
 		
-		Ruser addNew = new Ruser();
+		String rname = request.getParameter("rname");
+		String address = request.getParameter("address");
+		String description = request.getParameter("description");
 		
-		addNew.setUsername(username);
-		addNew.setUseremail(useremail);
-		addNew.setUserpassword(password);
-		addNew.setZip(zip);
-		addNew.setUserrole("user");
+		Restaurant addNew = new Restaurant();
 		
-		System.out.println("Add new grade details");
-		DbUser.insert(addNew);
+		addNew.setRname(rname);
+		addNew.setAddress(address);
+		addNew.setDescription(description);
+	
 		
+		System.out.println("Adding a new restaurant");
+		DbRestaurant.insert(addNew);
+		
+		System.out.println("Restaurant added");
 		String nextURL = "/Home.jsp";
 		response.sendRedirect(request.getContextPath()+nextURL);
-		
 		
 	}
 
