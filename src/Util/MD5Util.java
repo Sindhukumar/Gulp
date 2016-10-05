@@ -1,4 +1,4 @@
-package Tool;
+package Util;
 
 /*
  * The following class will provide you with a static method

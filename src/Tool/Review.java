@@ -1,4 +1,4 @@
-package model;
+package Tool;
 
 import java.io.Serializable;
 import javax.persistence.*;
