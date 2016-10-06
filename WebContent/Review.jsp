@@ -5,15 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Review Restaurant</title>
 </head>
-<body>
+<body >
 
 	<jsp:include page="bootstrap.jsp"></jsp:include>
 	<jsp:include page="navbar.jsp"></jsp:include>
 	
 		<form action="Review" method="post" onsubmit="return verifyPassword()">
-
+<br><br>
 			<input id="restaurantid"
 				name="restaurantid" type="hidden" value="${restaurant}"   />
 				<fieldset>
@@ -27,6 +28,8 @@
 						<option>5</option>
 					</select>
 				</fieldset>
+
+
 
 				<b>Review:</b><br>
 				<textarea name="review" id="review" class="form-control" rows="2"

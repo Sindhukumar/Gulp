@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Tool.Restaurant;
+import Tool.Review;
 import Tool.Ruser;
 import Util.DbRestaurant;
+import Util.DbReview;
 import Util.DbUser;
 
 /**
@@ -47,18 +49,30 @@ public class AdminServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		
 		Restaurant addNew = new Restaurant();
+		Review dummyreview = new Review();
+		Ruser user = (Ruser) request.getSession().getAttribute("user");
 		
 		addNew.setRname(rname);
 		addNew.setAddress(address);
 		addNew.setDescription(description);
-	
 		
 		System.out.println("Adding a new restaurant");
 		DbRestaurant.insert(addNew);
-		
 		System.out.println("Restaurant added");
-		String nextURL = "/Home.jsp";
+		
+		
+		dummyreview.setRating(null);
+		dummyreview.setReview(null);
+		dummyreview.setRuser(user);
+		dummyreview.setRestaurant(DbRestaurant.get(rname,address,description));
+		DbReview.insert(dummyreview);
+		System.out.println("Dummy Review added");
+		
+		
+		String nextURL = "/Home";
 		response.sendRedirect(request.getContextPath()+nextURL);
+		
+		
 		
 	}
 

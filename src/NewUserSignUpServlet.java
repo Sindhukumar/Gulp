@@ -52,7 +52,7 @@ public class NewUserSignUpServlet extends HttpServlet {
 		addNew.setZip(zip);
 		addNew.setUserrole("user");
 		
-		System.out.println("Add new grade details");
+		System.out.println("Add new user details");
 		DbUser.insert(addNew);
 		
 		String nextURL = "/LoginPage.jsp";

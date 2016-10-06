@@ -83,6 +83,29 @@ public class DbRestaurant {
         return posts;
     }
     
+    public static Restaurant get (String rname,String  address,String  description)
+    {
+        EntityManager em = DbUtil.getEmFactory().createEntityManager();
+        String qString = "select r from Restaurant r where r.rname =:rname AND r.address = :address AND r.description = :description";
+        
+        Restaurant posts = null;
+        try{
+            TypedQuery<Restaurant> query = em.createQuery(qString,Restaurant.class);
+            query.setParameter("rname", rname);
+            query.setParameter("address", address);
+            query.setParameter("description", description);
+            posts = query.getSingleResult();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return posts;
+    }
+    
+    
     public static Restaurant restaurant (Integer rid){
         EntityManager em = DbUtil.getEmFactory().createEntityManager();
         String qString = "select r from Restaurant r where r.rid =:rid";

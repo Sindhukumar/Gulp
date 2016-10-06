@@ -5,8 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+	<jsp:include page="bootstrapStudent.jsp"></jsp:include>
+
+	<jsp:include page="navbar.jsp"></jsp:include>
 </head>
 <body>
+<br>
+<center>
 <h2>Hello Admin</h2>
 <h3>Please enter new restaurant details</h3>
 		<br> <br>
@@ -20,5 +26,6 @@
 			<br> 
 						 <input type="submit" value="Submit" id="submit" />		</form>
 				<br> <br> <br><br> <br> <br><br> <br> <br>	<br> <br> <br><br> <br> <br>
+				</center>
 </body>
 </html>
