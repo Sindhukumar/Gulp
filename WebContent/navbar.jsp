@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="Tool.Ruser"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,10 +34,11 @@
 								alt="${user.username}" src="${gravatarURL}" height="30"
 								width="30" />&nbsp;${user.username}</a></li>
 
-					<c:if test="${user.userrole=='Admin'}">
+				<%	Ruser user = (Ruser) session.getAttribute("user");
+					if ("Admin".equalsIgnoreCase(user.getUserrole())||"AdminUser".equalsIgnoreCase(user.getUserrole())) {
+				%>
 					<li><a href="AdminPage.jsp">Add Restaurant </a></li>
-					</c:if>
-
+					<%} %>
 						<li><a href="Profile.jsp">Edit Profile </a></li>
 
 						<li><a href="support.jsp">Support</a></li>

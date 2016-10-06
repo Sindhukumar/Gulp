@@ -36,6 +36,7 @@ public class Home extends HttpServlet {
 		String nextURL = "/Home.jsp";
 		HttpSession session = request.getSession();
 		if("true".equalsIgnoreCase((String) request.getAttribute("logout"))){
+			session.setAttribute("user", null);
 			session.invalidate();
 		}
 		else{
