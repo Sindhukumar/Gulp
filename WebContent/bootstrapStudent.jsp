@@ -7,7 +7,7 @@
 <link href="styles/darkly.bootstrap.min.css" rel="stylesheet">
 
 
-<!-- Bootstrap--
+<!-- Bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css.map">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,400italic">

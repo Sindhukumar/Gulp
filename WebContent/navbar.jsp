@@ -34,20 +34,20 @@
 								width="30" />&nbsp;${user.username}</a></li>
 
 					<c:if test="${user.userrole=='Admin'}">
-					<li><a href="/AddRestaurant.jsp">Add Restaurant </a></li>
+					<li><a href="AdminPage.jsp">Add Restaurant </a></li>
 					</c:if>
 
-						<li><a href="/Profile.jsp">Edit Profile </a></li>
+						<li><a href="Profile.jsp">Edit Profile </a></li>
 
-						<li><a href="/support.jsp">Support</a></li>
+						<li><a href="support.jsp">Support</a></li>
 
-						<li><a href="/Home">Logout</a></li>
+						<li><a href="Home?logout=true">Logout</a></li>
 					</c:if>
 					
 					<c:if test="${user==null}">
-					<li><a href="/Signup.jsp">Sign up</a></li>
+					<li><a href="NewUserSignUp.jsp">Sign up</a></li>
 
-					<li><a href="/Signin.jsp">Sign in</a></li>
+					<li><a href="LoginPage.jsp">Sign in</a></li>
 					</c:if>
 					
 				</ul>

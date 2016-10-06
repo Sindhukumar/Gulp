@@ -43,6 +43,10 @@
 						<c:if test="${restaurants.average <0}">
 						<td> No rating Available</td>
 						</c:if>
+						<c:if test="${user.userrole=='user'}">
+						<td><a
+							href="Review?restaurant=<c:out value="${restaurants.restaurant.rid}"/>"><button>Add Review</button></a></td>
+						</c:if>	
 					</tr>
 				</c:forEach>
 			</tbody>

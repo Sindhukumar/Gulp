@@ -34,10 +34,14 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nextURL = "/Home.jsp";
-		
 		HttpSession session = request.getSession();
+		if("true".equalsIgnoreCase((String) request.getAttribute("logout"))){
+			session.invalidate();
+		}
+		else{
 		List <RS> rs = DbReview.getRestaurantsWithRating();
 		session.setAttribute("restaurantsList", rs);
+		}
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}
 

@@ -1,27 +1,29 @@
 
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import Tool.Ruser;
-import Util.DbUser;
-
+import Tool.RS;
+import Util.DbReview;
 
 /**
- * Servlet implementation class NewUserSignUpServlet
+ * Servlet implementation class Review
  */
-@WebServlet("/NewUserSignUpServlet")
-public class NewUserSignUpServlet extends HttpServlet {
+@WebServlet("/Review")
+public class Review extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NewUserSignUpServlet() {
+    public Review() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,35 +32,23 @@ public class NewUserSignUpServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String nextURL = "/Review.jsp";
+		
+		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		String username = request.getParameter("username");
-		String useremail = request.getParameter("useremail");
-		String password = request.getParameter("password");
-		String zip = request.getParameter("zip");
+		String nextURL = "/Home.jsp";
+		HttpSession session = request.getSession();
 		
-		Ruser addNew = new Ruser();
-		
-		addNew.setUsername(username);
-		addNew.setUseremail(useremail);
-		addNew.setUserpassword(password);
-		addNew.setZip(zip);
-		addNew.setUserrole("user");
-		
-		System.out.println("Add new grade details");
-		DbUser.insert(addNew);
-		
-		String nextURL = "/LoginPage.jsp";
-		response.sendRedirect(request.getContextPath()+nextURL);
+		List <RS> rs = DbReview.getRestaurantsWithRating();
+		session.setAttribute("restaurantsList", rs);
 		
 		
+		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}
 
 }

@@ -4,16 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
+
+	<jsp:include page="bootstrapStudent.jsp"></jsp:include>
+
+	<jsp:include page="navbar.jsp"></jsp:include>
+	<center>
+	<br>
+	<br>
+	<br>
+	<br><br><br><br><br>
 	<form action="LoginPageServlet" method="post">
-	
-		User Email:<br> <input type="text" name="useremail" id="useremail"> <br> 
-		Password:<br> <input type="password" name="userpassword" id="userpassword"> <br> <br>
-							 <input type="submit" value="Submit" id="submit" />		</form>
-				<br> <br> <br><br> <br> <br><br> <br> <br>	<br> <br> <br><br> <br> <br>
-		<br>
+
+		UserEmail:<input type="text" name="useremail"
+			id="useremail"> <br><br> Password: <input
+			type="password" name="userpassword" id="userpassword"> <br>
+		<br> <input type="submit" value="Submit" id="submit" />
 	</form>
+	</center>
 </body>
 </html>

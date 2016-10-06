@@ -54,18 +54,8 @@ public class LoginPageServlet extends HttpServlet {
 		if(DbUser.isValidUser(useremail,userpassword))
 		{
 			user = DbUser.getUserByEmail(useremail);
-			session.setAttribute("User", user);
-
-			if(user.getUserrole().equalsIgnoreCase("admin"))
-			{
-				System.out.println("Admin Page");
-				nextURL="/AdminPage.jsp";
-			}
-			else if(user.getUserrole().equalsIgnoreCase("user"))
-			{
-				System.out.println("User Page");
-				nextURL="/UserPage.jsp";
-			} 
+			session.setAttribute("user", user);
+			nextURL="/Home";
 		}
 
 		else
