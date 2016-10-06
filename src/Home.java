@@ -35,9 +35,13 @@ public class Home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nextURL = "/Home.jsp";
 		HttpSession session = request.getSession();
-		if("true".equalsIgnoreCase((String) request.getAttribute("logout"))){
+		String logout = (String)request.getParameter("logout");
+		System.out.println(logout);
+		if("yes".equalsIgnoreCase(logout)){
+			System.out.println("logout");
 			session.setAttribute("user", null);
 			session.invalidate();
+			nextURL = "/LoginPage.jsp";
 		}
 		else{
 		List <RS> rs = DbReview.getRestaurantsWithRating();
