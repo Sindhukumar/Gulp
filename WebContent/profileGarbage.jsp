@@ -7,26 +7,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>My Profile</title>
-<script>
+</head>
+<body>
+	<jsp:include page="bootstrap.jsp"></jsp:include>
+	<jsp:include page="navbar.jsp"></jsp:include>
+
+	<script>
 		window.onload = function() {
 			$('#update').hide();
 	<%if (("editprofile").equals(request.getParameter("action"))) {%>
 		$("#useremail").removeAttr("disabled");
-			$("#userpassword").removeAttr("disabled");
+			$("#password").removeAttr("disabled");
 			$("#username").removeAttr("disabled");
+			$("#motto").removeAttr("disabled");
 			$("#confirmpassword").removeAttr("disabled");
-			$("#zip").removeAttr("disabled");
 			$('#update').show();
 			$('#confirm').show();
 	<%}%>
 		};
 		
 		function verifyPassword() {
-	        var pass1 = document.getElementById("userpassword").value;
+	        var pass1 = document.getElementById("password").value;
 	        var pass2 = document.getElementById("confirmpassword").value;
 	        if (pass1 != pass2) {
 	            alert("Passwords Do not match");
-	            document.getElementById("userpassword").style.borderColor = "#E34234";
+	            document.getElementById("password").style.borderColor = "#E34234";
 	            document.getElementById("confirmpassword").style.borderColor = "#E34234";
 	            return false;
 	        }
@@ -34,26 +39,29 @@
 	    }
 	</script>
 
-
-</head>
-<body>
-	<jsp:include page="bootstrap.jsp"></jsp:include>
-	<jsp:include page="navbar.jsp"></jsp:include>
-
 	<center>
 		<form action="ProfileServlet" method="post"
 			onsubmit="return verifyPassword()">
-			<br><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;
-			Name: &nbsp; <input id="username" name="username" type="text" value="${sessionScope.user.username}" disabled /><br> <br> <br> &nbsp;&nbsp;&nbsp; 
-			Email:&nbsp; <input id="useremail" name="useremail" type="text"	value="${sessionScope.user.useremail}" disabled /><br> <br><br> &nbsp;&nbsp;
-			Password: &nbsp; <input id="userpassword" name="userpassword" type="password" value="${sessionScope.user.userpassword}" disabled /><br><br>
-			
+
+			&nbsp;&nbsp;&nbsp;&nbsp;Name: &nbsp; <input id="username"
+				name="username" type="text" value="${sessionScope.user.username}"
+				disabled /><br> <br> <br> &nbsp;&nbsp;&nbsp; Email:
+			&nbsp; <input id="useremail" name="useremail" type="text"
+				value="${sessionScope.user.useremail}" disabled /><br> <br>
+			<br> Password: &nbsp; <input id="password" name="password"
+				type="password" value="${sessionScope.user.userpassword}" disabled /><br>
+			<br>
 			<p style="display: none;" id="confirm">
-			Confirm Password: &nbsp; <input id="confirmpassword" name="confirmpassword" type="password" value="${sessionScope.user.userpassword}" disabled /></p><br> &nbsp;&nbsp;&nbsp;&nbsp;
-			Zip: &nbsp; <input id="zip"	name="zip" type="text" value="${sessionScope.user.zip}" disabled /><br><br>
-			<button id="update" type="submit" value="Submit" style="display: none;">
-			<font color="blue">Update</font>
+				Confirm Password: &nbsp; <input id="confirmpassword"
+					name="confirmpassword" type="password"
+					value="${sessionScope.user.userpassword}" disabled />
+			</p>
+			<br> &nbsp;&nbsp;&nbsp;&nbsp;Moto: &nbsp; <input id="motto"
+				name="motto" type="text" value="${sessionScope.user.motto}" disabled /><br>
+			<br>
+			<button id="update" type="submit" value="Submit"
+				style="display: none;">
+				<font color="blue">Update</font>
 			</button>
 		</form>
 
