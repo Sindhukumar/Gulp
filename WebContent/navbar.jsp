@@ -42,7 +42,7 @@
 						<%
 							}
 						%>
-						<li><a href="Profile.jsp">Edit Profile </a></li>
+						<li><a href="Profile.jsp?action=editprofile">Edit Profile </a></li>
 
 						<li><a href="support.jsp">Support</a></li>
 
