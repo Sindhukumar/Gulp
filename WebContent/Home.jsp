@@ -20,11 +20,13 @@
 
 <body>
 	<jsp:include page="bootstrap.jsp"></jsp:include>
-	
+
 	<jsp:include page="navbar.jsp"></jsp:include>
 
 	<div class="container">
-	<br><br><br>
+		<br>
+		<br>
+		<br>
 		<table class="table table-bordered table-striped table-hover"
 			id="myTable">
 			<thead>
@@ -40,25 +42,24 @@
 					<tr>
 						<td><c:out value="${restaurants.restaurant.rname}" /></td>
 						<td><c:out value="${restaurants.restaurant.address}" /></td>
-						<td><c:out value="${restaurants.restaurant.description}" /> </td>
-						<c:if test="${restaurants.average >-1}">
-						
-						<td><c:out value="${restaurants.average}" />			
-						
-						<c:forEach var="counter" begin="1" end="${restaurants.average}">
-						
-						<span class="glyphicon glyphicon-star"></span>
-						</c:forEach>
+						<td><c:out value="${restaurants.restaurant.description}" />
 						</td>
-						
+						<c:if test="${restaurants.average >-1}">
+
+							<td> <c:forEach	var="counter" begin="1" end="${restaurants.average}">
+
+									<span class="glyphicon glyphicon-star"></span>
+								</c:forEach></td>
+
 						</c:if>
 						<c:if test="${restaurants.average <0}">
-						<td> No rating Available</td>
+							<td>No rating Available</td>
 						</c:if>
 						<c:if test="${user.userrole=='user'}">
-						<td><a
-							href="Review.jsp?restaurantid=<c:out value="${restaurants.restaurant.rid}"/>"><button>Add Review</button></a></td>
-						</c:if>	
+							<td><a
+								href="Review.jsp?restaurantid=<c:out value="${restaurants.restaurant.rid}"/>"><button>Add
+										Review</button></a></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -67,6 +68,8 @@
 
 	</div>
 
-<br><br><br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>

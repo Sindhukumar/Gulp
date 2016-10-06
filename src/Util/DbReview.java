@@ -72,7 +72,7 @@ public class DbReview {
 
     public static List<Review> review (){
         EntityManager em = DbUtil.getEmFactory().createEntityManager();
-        String qString = "select b from Gradebook b";
+        String qString = "select b from Review b";
         
         List<Review> posts = null;
         try{
@@ -90,7 +90,7 @@ public class DbReview {
     
     public static List<RS> getRestaurantsWithRating (){
         EntityManager em = DbUtil.getEmFactory().createEntityManager();
-        String qString = "select r.restaurant, avg(r.rating) average from Review r group by r.restaurant order by avg(r.rating)";
+        String qString = "select r.restaurant, avg(r.rating) average from Review r group by r.restaurant order by avg(r.rating) DESC";
         List<Object[]> restaurants=null;
         List<RS> rsList = new ArrayList<RS>();
         try{
@@ -114,12 +114,12 @@ public class DbReview {
     
     public static Review review (Integer reviewid){
         EntityManager em = DbUtil.getEmFactory().createEntityManager();
-        String qString = "select b from Gradebook b where b.gradebookid =:gradebookid";
+        String qString = "select b from Review b where b.reviewid =:reviewid";
         
         Review reviews = null;
         try{
             TypedQuery<Review> query = em.createQuery(qString,Review.class);
-            query.setParameter("gradebookid", reviewid);
+            query.setParameter("reviewid", reviewid);
             reviews = query.getSingleResult();
 
         }catch (Exception e){
