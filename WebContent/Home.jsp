@@ -2,9 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Tool.Ruser"%>
+<%@page import="Tool.RS"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home Page</title>
@@ -14,6 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
 </head>
+
+
 <body>
 	<jsp:include page="bootstrap.jsp"></jsp:include>
 	
@@ -36,9 +40,17 @@
 					<tr>
 						<td><c:out value="${restaurants.restaurant.rname}" /></td>
 						<td><c:out value="${restaurants.restaurant.address}" /></td>
-						<td><c:out value="${restaurants.restaurant.description}" /></td>
+						<td><c:out value="${restaurants.restaurant.description}" /> </td>
 						<c:if test="${restaurants.average >-1}">
-						<td><c:out value="${restaurants.average}" /></td>
+						
+						<td><c:out value="${restaurants.average}" />			
+						
+						<c:forEach var="counter" begin="1" end="${restaurants.average}">
+						
+						<span class="glyphicon glyphicon-star"></span>
+						</c:forEach>
+						</td>
+						
 						</c:if>
 						<c:if test="${restaurants.average <0}">
 						<td> No rating Available</td>
