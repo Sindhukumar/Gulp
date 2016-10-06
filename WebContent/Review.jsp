@@ -8,36 +8,35 @@
 
 <title>Review Restaurant</title>
 </head>
-<body >
+<body>
 
 	<jsp:include page="bootstrap.jsp"></jsp:include>
 	<jsp:include page="navbar.jsp"></jsp:include>
+
+	<form action="ReviewServlet" method="post">
 	
-		<form action="Review" method="post" onsubmit="return verifyPassword()">
-<br><br>
-			<input id="restaurantid"
-				name="restaurantid" type="hidden" value="${restaurant}"   />
-				<fieldset>
-					<label for="number">Rating</label> 
-					<select name="number" id="number">
-						<option selected="selected">0</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-					</select>
-				</fieldset>
+	<br><br>
+	restaurantid:<input id="restaurantid" name="restaurantid" type="text"
+			value="${param.restaurantid}" />
+		<input id="restaurantid" name="restaurantid" type="hidden"
+			value="${param.restaurantid}" />
+		<fieldset>
+			<label for="number">Rating</label> <select name="number" id="number">
+				<option selected="selected">0</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</fieldset>
 
-
-
-				<b>Review:</b><br>
-				<textarea name="review" id="review" class="form-control" rows="2"
-					placeholder="We value your feedback!" maxlength="200"></textarea>
-			</form>
-			<button id="submit" type="submit" value="Submit">
-				<font color="blue">Submit</font>
-			</button>
-		</form>
+		<b>Review:</b><br>
+		<textarea name="review" id="review" class="form-control" rows="2"
+			placeholder="We value your feedback!" maxlength="200"></textarea>
+		<button id="submit" type="submit" value="Submit">
+			<font color="blue">Submit</font>
+		</button>
+	</form>
 </body>
 </html>

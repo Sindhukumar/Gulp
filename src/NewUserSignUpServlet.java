@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,10 +53,14 @@ public class NewUserSignUpServlet extends HttpServlet {
 		addNew.setZip(zip);
 		addNew.setUserrole("user");
 		
-		System.out.println("Add new user details");
-		DbUser.insert(addNew);
-		
 		String nextURL = "/LoginPage.jsp";
+		System.out.println("Add new user details");
+		try{
+		DbUser.insert(addNew);
+		}catch(Exception e){
+			nextURL = "/NewUserSignUp.jsp?exist=yes";
+		}
+		
 		response.sendRedirect(request.getContextPath()+nextURL);
 		
 		

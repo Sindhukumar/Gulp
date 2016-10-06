@@ -57,7 +57,7 @@
 						</c:if>
 						<c:if test="${user.userrole=='user'}">
 						<td><a
-							href="Review?restaurant=<c:out value="${restaurants.restaurant.rid}"/>"><button>Add Review</button></a></td>
+							href="Review.jsp?restaurantid=<c:out value="${restaurants.restaurant.rid}"/>"><button>Add Review</button></a></td>
 						</c:if>	
 					</tr>
 				</c:forEach>

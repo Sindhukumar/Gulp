@@ -8,10 +8,14 @@
 </head>
 <body>
 <center>
-<h1>Welcome to Gulp</h1>
-		<h3>Please enter your Sign-up details</h3>
-		<br> <br>
+<jsp:include page="bootstrapStudent.jsp"></jsp:include>
 
+	<jsp:include page="navbar.jsp"></jsp:include>
+		<h3>Please Sign-up below</h3>
+		<br> <br>
+		<%if("yes".equalsIgnoreCase((String)request.getAttribute("exists"))){ %>
+		<p> Email already exists. Try again.</p>
+		<%} %>
 		<form action="NewUserSignUpServlet" method="post">
 			Name:<br> <input type="text" name="username" id="username">
 			<br> 

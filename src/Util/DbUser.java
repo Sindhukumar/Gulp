@@ -38,6 +38,7 @@ public class DbUser {
 			e.printStackTrace();
 			// System.out.println("DbGradebook: rollback transaction");
 			trans.rollback();
+			throw(e);
 		} finally {
 			// System.out.println("DbGradebook: close em");
 			em.close();

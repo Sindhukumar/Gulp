@@ -113,7 +113,7 @@ public class DbRestaurant {
         Restaurant posts = null;
         try{
             TypedQuery<Restaurant> query = em.createQuery(qString,Restaurant.class);
-            query.setParameter("restaurant", rid);
+            query.setParameter("rid", rid);
             posts = query.getSingleResult();
 
         }catch (Exception e){
