@@ -41,7 +41,6 @@ public class Home extends HttpServlet {
 			System.out.println("logout");
 			session.setAttribute("user", null);
 			session.invalidate();
-			nextURL = "/LoginPage.jsp";
 		}
 		else{
 		List <RS> rs = DbReview.getRestaurantsWithRating();
