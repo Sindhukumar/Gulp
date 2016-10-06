@@ -60,6 +60,11 @@
 								href="Review.jsp?restaurantid=<c:out value="${restaurants.restaurant.rid}"/>"><button>Add
 										Review</button></a></td>
 						</c:if>
+						<c:if test="${user.userrole=='admin'}">
+							<td><a
+								href="EditRestaurant?restaurantid=<c:out value="${restaurants.restaurant.rid}"/>"><button>Edit
+										Restaurant</button></a></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</tbody>

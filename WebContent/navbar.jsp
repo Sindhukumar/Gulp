@@ -13,7 +13,7 @@
 	<div role="navigation" class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="#all" class="navbar-brand scroll-to"><img
+				<a href="Home" class="navbar-brand scroll-to"><img
 					src="images/gulp.jpg" alt="logo" class="hidden-xs hidden-sm"
 					height="50" width="150"><img src="images/gradebook.png"
 					alt="logo" class="visible-xs visible-sm" height="50" width="50"><span
@@ -30,7 +30,7 @@
 				<ul class="nav navbar-nav">
 
 					<c:if test="${user!=null}">
-						<li><a href="Profile.jsp?action=viewprofile"><img
+						<li><a href="ProfileServlet?action=viewprofile"><img
 								alt="${user.username}" src="${gravatarURL}" height="30"
 								width="30" />&nbsp;${user.username}</a></li>
 
@@ -42,7 +42,7 @@
 						<%
 							}
 						%>
-						<li><a href="Profile.jsp?action=editprofile">Edit Profile </a></li>
+						<li><a href="ProfileServlet?action=editprofile">Edit Profile </a></li>
 
 						<li><a href="support.jsp">Support</a></li>
 

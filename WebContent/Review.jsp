@@ -16,8 +16,6 @@
 	<form action="ReviewServlet" method="post">
 	
 	<br><br>
-	restaurantid:<input id="restaurantid" name="restaurantid" type="text"
-			value="${param.restaurantid}" />
 		<input id="restaurantid" name="restaurantid" type="hidden"
 			value="${param.restaurantid}" />
 		<fieldset>
