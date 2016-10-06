@@ -36,16 +36,11 @@ public class Home extends HttpServlet {
 		String nextURL = "/Home.jsp";
 		HttpSession session = request.getSession();
 		String logout = (String)request.getParameter("logout");
-		System.out.println(logout);
 		if("yes".equalsIgnoreCase(logout)){
-			System.out.println("logout");
 			session.setAttribute("user", null);
-			session.invalidate();
 		}
-		else{
 		List <RS> rs = DbReview.getRestaurantsWithRating();
 		session.setAttribute("restaurantsList", rs);
-		}
 		getServletContext().getRequestDispatcher(nextURL).forward(request, response);
 	}
 
